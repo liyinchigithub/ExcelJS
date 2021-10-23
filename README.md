@@ -32,11 +32,11 @@ mocha
 ## node
 
 ```shell
-node ./ExecelJS/until/excel2json.js
+node ./ExecelJS/util/excel2json.js
 ```
 
 ```shell
-node ./ExecelJS/until/json2excel.js
+node ./ExecelJS/util/json2excel.js
 ```
 ##  数据格式
 
