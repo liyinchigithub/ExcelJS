@@ -1,0 +1,25 @@
+{
+  "name": "exceljs-demo",
+  "version": "1.0.0",
+  "description": "parase excel document",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mocha",
+    "excel",
+    "xlsx"
+  ],
+  "author": "liyinchi",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "exceljs": "^1.9.1",
+    "fs": "0.0.1-security",
+    "mocha": "^6.1.4",
+    "node-xlsx": "^0.15.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
