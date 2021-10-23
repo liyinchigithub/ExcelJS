@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.23.0",
-    "exceljs": "^1.9.1",
+    "exceljs": "^1.15.0",
     "fs": "0.0.1-security",
     "mocha": "^6.1.4",
     "node-xlsx": "^0.15.0",

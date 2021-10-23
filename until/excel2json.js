@@ -1,23 +1,30 @@
 const fs = require('fs')
 const Excel = require('exceljs');
 
-//输入 src dst：json目录下存放目标文件 json2excel.json
-// src：读取的json文件目录
-// dst：导出的excel文件目录
- const json2excel = async function(src,dst){
-  const fileStream = await fs.readFileSync(src);
-  const arr=JSON.parse(fileStream)
-  const keys=Object.keys(arr[0]).map(item=> ({ header: item, key: item }));
+//输入 src dst：json目录下存放目标文件 excel2json.xlsx -> excel2json.json
+// src：读取的excel文件目录
+// dst：导出的json文件目录
+ const excel2json = async function(src,dst){
+    const result=[];
+    let keys=[];
+    const workbook = new Excel.Workbook();
+    // 读取excel
+    await workbook.xlsx.readFile(src);
+    const worksheet = workbook.getWorksheet(1); //获取第一个worksheet
+    worksheet.eachRow((row, rowNumber)=> {
+        let obj={};
+        // cell.type单元格类型：6-公式 ;2-数值；3-字符串
+        row.eachCell((cell, colNumber)=>{
+            const value=cell.value;
+            if(rowNumber===1) keys.push(value);
+            else obj[keys[colNumber-1]]=value;
+        });
+        if(rowNumber>1) result.push(obj)
+    });
+    console.log(result)
+    // 写入流
+    await fs.writeFileSync(dst,JSON.stringify(result));
 
-  const workbook = new Excel.stream.xlsx.WorkbookWriter({
-    filename: dst
-  });
-  const worksheet = workbook.addWorksheet('Sheet');
-  worksheet.columns=keys
-  for(let item of arr) {
-    worksheet.addRow(item).commit();
-  }
-  workbook.commit();
 }
 
-json2excel('./json/json2excel.json','./excel/json2excel.xlsx');
+excel2json('./excel/excel2json.xlsx','./json/excel2json.json');
