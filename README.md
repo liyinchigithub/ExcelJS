@@ -8,8 +8,9 @@ ExcelJS 是一个 Node.js 模块，可用来读写和操作 XLSX 和 JSON 电子
 |-|-|
 |nodejs|v12.13.0|
 |request|2.88.2|
+|axios|0.23|
 |path|0.12.7|
-|webpack|6.1.4|
+|exceljs|1.9.1|
 |node-xlsx|0.15.0|
 |fs|0.0.1-security|
 
